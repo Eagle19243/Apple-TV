@@ -1,0 +1,12 @@
+*~
+*#
+.#*
+Private.plist
+.DS_STORE
+server/node_modules
+server/npm-debug.log
+atv/atv.xcodeproj/project.xcworkspace/xcshareddata
+atv/atv.xcodeproj/project.xcworkspace/xcuserdata
+atv/atv.xcodeproj/xcuserdata
+project.xcworkspace/xcuserdata/
+xcuserdata/

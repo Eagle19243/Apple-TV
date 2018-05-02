@@ -1,0 +1,17 @@
+{
+  "name": "internet-archive",
+  "version": "1.0.4",
+  "description": "Internet Archive Apple TV app",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-env": "*",
+    "webpack": "*",
+    "webpack-cli": "^2.1.2"
+  },
+  "author": "Eagle19243"
+}
