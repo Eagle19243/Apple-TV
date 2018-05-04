@@ -71,26 +71,50 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/js/ia.js":
-/*!**********************!*\
-  !*** ./src/js/ia.js ***!
-  \**********************/
+/***/ "./src/js/app.js":
+/*!***********************!*\
+  !*** ./src/js/app.js ***!
+  \***********************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nApp.onLaunch = function (options) {\n    var loadingDoc = CreateLoadingDocument();\n    navigationDocument.pushDocument(loadingDoc);\n};\n\n/**\n * Convenience function to create a TVML loading document with a specified title.\n */\nfunction CreateLoadingDocument(title) {\n    // If no title has been specified, fall back to \"Loading...\".\n    title = title || \"Loading...\";\n\n    var template = \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" ?>\\n        <document>\\n            <loadingTemplate>\\n                <activityIndicator>\\n                    <title>\" + title + \"</title>\\n                </activityIndicator>\\n            </loadingTemplate>\\n        </document>\";\n\n    return new DOMParser().parseFromString(template, \"application/xml\");\n}\n\n/**\n * Convenience function to create a TVML alert document with a title and description.\n */\nfunction CreateAlertDocument(title, description) {\n    var template = \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" ?>\\n        <document>\\n            <alertTemplate>\\n                <title>\" + title + \"</title>\\n                <description>\" + description + \"</description>\\n            </alertTemplate>\\n        </document>\\n    \";\n\n    return new DOMParser().parseFromString(template, \"application/xml\");\n}\n\n//# sourceURL=webpack:///./src/js/ia.js?");
+eval("\n\nApp.onLaunch = function (options) {\n    var baseURL = options.BASEURL;\n    var scriptURLs = [\"Constants\", \"Utils\"].map(function (moduleName) {\n        return \"./\" + moduleName + \".js\";\n    });\n    console.log(location.href);\n    console.log(scriptURLs);\n    evaluateScripts(scriptURLs, function (success) {\n        if (success) {\n            var loadingDoc = CreateLoadingDocument();\n            navigationDocument.pushDocument(loadingDoc);\n        } else {\n            var alertDoc = CreateAlertDocument();\n            navigationDocument.pushDocument(alertDoc);\n            throw new EvalError(\"Internet Archive application.js: unable to evaluate scripts.\");\n        }\n    });\n};\n\n//# sourceURL=webpack:///./src/js/app.js?");
+
+/***/ }),
+
+/***/ "./src/js/constants.js":
+/*!*****************************!*\
+  !*** ./src/js/constants.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("// constants.js\n\n\n//# sourceURL=webpack:///./src/js/constants.js?");
+
+/***/ }),
+
+/***/ "./src/js/utils.js":
+/*!*************************!*\
+  !*** ./src/js/utils.js ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\n// utils\n/**\n * Convenience function to create a TVML loading document with a specified title.\n */\nfunction CreateLoadingDocument(title) {\n    // If no title has been specified, fall back to \"Loading...\".\n    title = title || \"Loading...\";\n\n    var template = \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" ?>\\n        <document>\\n            <loadingTemplate>\\n                <activityIndicator>\\n                    <title>\" + title + \"</title>\\n                </activityIndicator>\\n            </loadingTemplate>\\n        </document>\";\n\n    return new DOMParser().parseFromString(template, \"application/xml\");\n}\n\n/**\n * Convenience function to create a TVML alert document with a title and description.\n */\nfunction CreateAlertDocument(title, description) {\n    var template = \"<?xml version=\\\"1.0\\\" encoding=\\\"UTF-8\\\" ?>\\n        <document>\\n            <alertTemplate>\\n                <title>\" + title + \"</title>\\n                <description>\" + description + \"</description>\\n            </alertTemplate>\\n        </document>\\n    \";\n\n    return new DOMParser().parseFromString(template, \"application/xml\");\n}\n\n//# sourceURL=webpack:///./src/js/utils.js?");
 
 /***/ }),
 
 /***/ 0:
-/*!****************************!*\
-  !*** multi ./src/js/ia.js ***!
-  \****************************/
+/*!*********************************************************************!*\
+  !*** multi ./src/js/app.js ./src/js/utils.js ./src/js/constants.js ***!
+  \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__(/*! ./src/js/ia.js */\"./src/js/ia.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/ia.js?");
+eval("__webpack_require__(/*! ./src/js/app.js */\"./src/js/app.js\");\n__webpack_require__(/*! ./src/js/utils.js */\"./src/js/utils.js\");\nmodule.exports = __webpack_require__(/*! ./src/js/constants.js */\"./src/js/constants.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/app.js_./src/js/utils.js_./src/js/constants.js?");
 
 /***/ })
 

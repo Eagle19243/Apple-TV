@@ -1,8 +1,4 @@
-App.onLaunch = function(options) {
-    const loadingDoc = CreateLoadingDocument();
-    navigationDocument.pushDocument(loadingDoc);
-}
-
+// utils
 /**
  * Convenience function to create a TVML loading document with a specified title.
  */

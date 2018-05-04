@@ -41,8 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, TVApplicationControllerDe
             baseURL = myDict?.value(forKey: "JSPREFIX") as! String
         #endif
         
-        let bootURL = "http://192.168.0.222:9001/server/dist/ia.js"
-//        let bootURL = baseURL + "server/dist/ia.js"
+        baseURL = "http://192.168.0.222:9001/"
+        let bootURL = baseURL + "server/dist/ia.js"
         let defaults = UserDefaults.standard
         defaults.set(bootURL, forKey: "js_url")
         
