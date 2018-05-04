@@ -1,10 +1,9 @@
-var
-    webpack = require('webpack'),
-    root = __dirname + '/web/app',
-    entry = {
+var webpack = require('webpack');
+var root = __dirname + '/web/app';
+var entry = {
         app: './web/app/app.js'
-    },
-    output = {
+    };
+var output = {
         path: __dirname,
         filename: '[name].js'
     };
