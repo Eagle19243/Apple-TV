@@ -9,28 +9,26 @@ import loaderTpl from 'shared/templates/loader.hbs';
 import errorTpl from 'shared/templates/error.hbs';
 
 // pages
-import HomePage from 'pages/home';
-import MoviesPage from 'pages/movies';
-import TvShowsPage from 'pages/tvshows';
-import MovieDetailsPage from 'pages/movie-details';
-import PlayPage from 'pages/play';
+import VideoPage from 'pages/video';
+import MusicPage from 'pages/music';
+import SearchPage from 'pages/search';
 
 ATV.start({
 	style: css,
 	menu: {
 		items: [{
-			id: 'home',
-			name: 'Home',
-			page: HomePage,
+			id: 'video',
+			name: 'Videos',
+			page: VideoPage,
 			attributes: { autoHighlight: true }
 		}, {
-			id: 'movies',
-			name: 'Movies',
-			page: MoviesPage
+			id: 'music',
+			name: 'Music',
+			page: MusicPage
 		}, {
-			id: 'tvshows',
-			name: 'TV Shows',
-			page: TvShowsPage
+			id: 'search',
+			name: 'Search',
+			page: SearchPage
 		}]
 	},
 	templates: {

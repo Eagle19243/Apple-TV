@@ -10,7 +10,6 @@ var environment = environments.indexOf($.util.env.t) > -1 ? $.util.env.t : 'deve
 var isProduction = (environment === 'production');
 var webpackConfig = require('./webpack.config.js')[environment];
 
-var port = $.util.env.p || 9001;
 var src = 'web/app/';
 var dist = 'web/public/';
 
@@ -24,16 +23,6 @@ gulp.task('scripts', function() {
             title: 'js'
         }))
         .pipe($.connect.reload());
-});
-
-gulp.task('serve', function() {
-    $.connect.server({
-        root: dist,
-        port: port,
-        livereload: {
-            port: 35728
-        }
-    });
 });
 
 gulp.task('static', function(cb) {
@@ -66,4 +55,4 @@ gulp.task('build', ['clean'], function() {
 });
 
 // by default build project and then watch files
-gulp.task('default', ['build', 'serve', 'watch']);
+gulp.task('default', ['build', 'watch']);

@@ -12,16 +12,8 @@ $ npm install                           # Install dependencies
 Builds the application and starts a webserver. By default the webserver starts at port 9001.
 
 ```shell
-$ npm run dev # development
-$ npm run prod # production
+$ npm start # development
 ```
-
-By default, it builds in debug mode and starts the server with live reload.
-
-* If you need to build otherwise, use `gulp` with additional flags.
-* If you need to build in release mode, add `--t production` flag.
-* You can define a port with `--p 8080` flag. (If you start the server on a different port, make sure to update the same in the native application)
-
 ### Structure
 The project is split into two parts:
 
