@@ -1,18 +1,33 @@
-# ia-atv
+# appletv-boilerplate
+A boilerplate for bootstrapping AppleTV apps using [atvjs](https://github.com/emadalam/atvjs).
 
-AppleTV interface to Internet Archive 
+### Getting Started
 
+Assuming that you have [nodejs](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine, do the following to get started:
 
-To get your development environment up and runnning:
+```shell
+$ npm install -g gulp                   # Install Gulp globally
+$ npm install                           # Install dependencies
+```
 
-1. Install Xcode
-2. Copy Private.plist.template to Private.plist and edit it to include actual values.
-    * APIURL is the prefix for the API resouce endpoints
-    * JSPREFIX is the http(s) prefix for the directory serving javascript
-    * SIMULATORJSPREFIX is the http prefix for the directory serving javascript for the simulator
-4. The ia.js points to an HTTP server running locally.  To serve it locally, start up a simple server from the ia-atv directory by running the following: `python -m SimpleHTTPServer 9001`
-5. To start editing the code, from the ia-atv directory run: `open atv/atv.xcodeproj.
-6. While developing, you can use  the Safari webinspector to debug the javascript.
-    * Make sure you have Safari 9.0 or newer
-    * From the command line, run the following: `defaults write BUNDLEID WebKitDeveloperExtras -bool true`. You can find the current bundleid in the swift info
-    * In Safari, click Develop > Simulator > Automatically Show Web Inspector for JSContexts
+### Development
+Builds the application and starts a webserver. By default the webserver starts at port 9001.
+
+```shell
+$ npm start
+```
+
+By default, it builds in debug mode and starts the server with live reload.
+
+* If you need to build otherwise, use `gulp` with additional flags.
+* If you need to build in release mode, add `--t production` flag.
+* You can define a port with `--p 8080` flag. (If you start the server on a different port, make sure to update the same in the native application)
+
+### Structure
+The project is split into two parts:
+
+- native: this directory contains the Xcode project and related files. The AppDelegate.swift file handles the setup of the TVMLKit framework and launching the JavaScript context to manage the application.
+- web: this directory contains the JavaScript and TVML template files needed to render the application. The contents of this directory must be hosted on a server accessible from the device.
+
+### License
+[MIT License](http://opensource.org/licenses/MIT).
