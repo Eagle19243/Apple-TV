@@ -12,6 +12,9 @@ import errorTpl from 'shared/templates/error.hbs';
 import VideoPage from 'pages/video';
 import MusicPage from 'pages/music';
 import SearchPage from 'pages/search';
+import YearsPage from 'pages/years';
+import YearItemsPage from 'pages/year-items';
+import PlayPage from 'pages/play';
 
 ATV.start({
 	style: css,

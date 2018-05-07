@@ -1,28 +1,19 @@
 <document>
-	<stackTemplate theme="light">
+	<searchTemplate theme="light">
+		<searchField id="search" />
 		<collectionList>
 			<shelf>
-				<header><title>Popular Movies</title></header>
-				<section>
-					{{#each movies }}
-					<lockup data-href-page="movie-details" data-href-page-options="{{toJSON this }}">
-						<img class="tile" src="{{poster_url poster_path }}"/>
-						<title class="showAndScrollTextOnHighlight">{{ title }}</title>
-					</lockup>
-					{{/each}}
-				</section>
+				<header>
+					<title>Most Downloaded Videos</title>
+				</header>
+				<section id="video_result" />
 			</shelf>
 			<shelf>
-				<header><title>Popular TV Shows</title></header>
-				<section>
-					{{#each tvShows }}
-					<lockup data-href-page="tvshow-details" data-href-page-options="{{toJSON this }}">
-						<img class="tile" src="{{poster_url poster_path }}"/>
-						<title class="showAndScrollTextOnHighlight">{{ title }}</title>
-					</lockup>
-					{{/each}}
-				</section>
+				<header>
+					<title>Most Downloaded Music</title>
+				</header>
+				<section id="music_result" />
 			</shelf>
 		</collectionList>
-	</stackTemplate>
+	</searchTemplate>
 </document>
