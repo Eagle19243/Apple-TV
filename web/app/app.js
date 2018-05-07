@@ -2,6 +2,8 @@ import ATV from 'atvjs';
 
 // template helpers
 import 'lib/template-helpers';
+// API
+import 'lib/api';
 // raw css string
 import css from 'assets/css/app.css';
 // shared templates
@@ -15,6 +17,7 @@ import SearchPage from 'pages/search';
 import YearsPage from 'pages/years';
 import YearItemsPage from 'pages/year-items';
 import PlayPage from 'pages/play';
+import AccountPage from 'pages/account';
 
 ATV.start({
 	style: css,
@@ -32,6 +35,10 @@ ATV.start({
 			id: 'search',
 			name: 'Search',
 			page: SearchPage
+		}, {
+			id: 'account',
+			name: 'Account',
+			page: AccountPage
 		}]
 	},
 	templates: {

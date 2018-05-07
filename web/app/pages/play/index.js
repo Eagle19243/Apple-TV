@@ -1,36 +1,47 @@
 import ATV from 'atvjs';
-
-const _ = ATV._;
-
-const sampleStreams = [
-	'https://bitdash-a.akamaihd.net/content/MI201109210084_1/m3u8s/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.m3u8',
-	'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-	'https://mnmedias.api.telequebec.tv/m3u8/29880.m3u8',
-	'http://184.72.239.149/vod/smil:BigBuckBunny.smil/playlist.m3u8',
-	'http://www.streambox.fr/playlists/test_001/stream.m3u8',
-	'http://qthttp.apple.com.edgesuite.net/1010qwoeiuryfg/sl.m3u8',
-	'http://playertest.longtailvideo.com/adaptive/oceans_aes/oceans_aes.m3u8',
-	'http://playertest.longtailvideo.com/adaptive/wowzaid3/playlist.m3u8',
-	'http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8'
-];
-const sampleStreamsLength = sampleStreams.length;
-const upperBoundIndex = sampleStreamsLength - 1;
+import API from 'lib/api';
 
 var PlayPage = ATV.Page.create({
     name: 'play',
     ready(options, resolve, reject) {
-    	// get the asset id to load video stream
-    	/*let assetId = options.id;*/
-		let sampleStream = sampleStreams[_.random(0, upperBoundIndex)];
-		let player = new Player();
-		let mediaItem = new MediaItem('video', sampleStream);
-		let playlist = new Playlist();
+		let identifier = options.identifier;
+		let title = options.title;
 
-		playlist.push(mediaItem);
-		player.playlist = playlist;
-		player.play();
+		API.GetMetaData(identifier, function(data){
+			console.log('PlayPage-', data);
+			let player = new Player();
+			let playlist = new Playlist();
 
-		resolve(false);
+			var filesToPlay = [];
+			var collection = 'movies';
+			var mediaType = (collection == 'movies') ? 'video': 'audio';
+
+			data.files.forEach(function(file){
+				if (collection == 'movies' && file.name.endsWith('.mp4')) {
+					filesToPlay.push(file);
+				} else if (collection == 'etree' && file.name.endsWith('.mp3')) {
+					filesToPlay.push(file);
+				}
+			});
+
+			filesToPlay.sort(function(a, b){
+				return parseInt(a.track) - parseInt(b.track);
+			}).forEach(function(file){
+				let mediaItem = new MediaItem('video', "https://archive.org/download/" + identifier + "/" + encodeURI(file.name));
+				mediaItem.title = file.title || title;
+				mediaItem.subtitle = file.album;
+				mediaItem.artworkImageURL = "https://archive.org/services/get-item-image.php?identifier=" + identifier;
+				playlist.push(mediaItem);
+			});
+
+			player.playlist = playlist;
+			player.play();
+
+			resolve(false);
+		}, function(){
+			reject();
+		});
+		
     }
 });
 

@@ -25,6 +25,10 @@ const helpers = {
 		}
 		return str;
 	},
+	add_collection(obj, collection){
+		obj.collection = collection;
+		return obj;
+	},
 	asset_url(asset) {
 		return new Handlebars.SafeString(assetUrl(asset));
 	},

@@ -240,7 +240,7 @@
 				DEVELOPMENT_TEAM = ZSFX78H3ZT;
 				INFOPLIST_FILE = atv/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = archivetv;
+				PRODUCT_BUNDLE_IDENTIFIER = com.archive.org.archivetv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cb547cd6-ca85-4036-a3df-82d88746c778";
 				PROVISIONING_PROFILE_SPECIFIER = atv_dev0503;
@@ -256,7 +256,7 @@
 				DEVELOPMENT_TEAM = ZSFX78H3ZT;
 				INFOPLIST_FILE = atv/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = archivetv;
+				PRODUCT_BUNDLE_IDENTIFIER = com.archive.org.archivetv;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "dd986d89-2ad9-4129-828e-f1f148967b1d";
 				PROVISIONING_PROFILE_SPECIFIER = ATV_dis0424;
