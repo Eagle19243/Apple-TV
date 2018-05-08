@@ -3,8 +3,8 @@
   "version": "1.0.5",
   "description": "Internet Archive Apple TV app",
   "scripts": {
-    "dev": "gulp --t development",
-    "prod": "gulp --t production"
+    "start": "gulp --t production",
+    "dev": "gulp --t development"
   },
   "devDependencies": {
     "babel-core": "^6.20.0",
